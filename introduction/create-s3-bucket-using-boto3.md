@@ -1,0 +1,16 @@
+# Boto3 steps to create S3 bucket
+
+Here are the steps to create an S3 bucket using the `boto3` Python library:
+
+1. Import the boto3 library:
+    ```python
+    import boto3
+    ```
+2. Create a new `boto3 S3` client:
+    ```python
+    s3 = boto3.client('s3')
+    ```
+3. Create a new S3 bucket using the create_bucket method. Replace my-bucket-name with the name you want to give to your bucket, and replace us-east-1 with the region where you want to create the bucket:
+    ```python
+    s3.create_bucket(Bucket='my-bucket-name', CreateBucketConfiguration={'LocationConstraint': 'us-east-1'})
+    ```
