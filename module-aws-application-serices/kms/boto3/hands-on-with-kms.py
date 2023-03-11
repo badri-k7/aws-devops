@@ -88,4 +88,6 @@ try:
     with open(filename + '.decrypted', 'wb') as f:
         f.write(decrypted_data)
     print("File decrypted successfully!\n")
-except ClientError
+except ClientError as e:
+    print("Error decrypting file: " + str(e),"\n")
+
