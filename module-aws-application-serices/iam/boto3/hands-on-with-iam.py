@@ -83,7 +83,7 @@ print("Attached policy to role: ", response)
 #https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/iam.html#IAM.Client.attach_user_policy
 # Attach the policy to the user
 response = iam.attach_user_policy(
-    UserName=new_username,
+    UserName=user_name,
     PolicyArn=policy_arn
 )
 
