@@ -9,4 +9,5 @@
 - [AWS Application Services](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices)
   - [DynamoDB handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/dynamodb/boto3)
   - [SQS handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/sqs/boto3)
+  - [IAM handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/iam/boto3)
   
