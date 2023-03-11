@@ -14,7 +14,7 @@ role_name = 'study_iam_role'
 response = iam.create_user(UserName=user_name)
 
 # Print the response
-print("Created new IAM user: ", response)
+print("Created new IAM user: ", response,"\n")
 
 # Create a new IAM policy
 policy_document = {
@@ -35,7 +35,7 @@ response = iam.create_policy(
 )
 
 # Print the response
-print("Created new IAM policy: ", response)
+print("Created new IAM policy: ", response,"\n")
 
 # Get the policy ARN from the response
 policy_arn = response['Policy']['Arn']
@@ -63,7 +63,7 @@ response = iam.create_role(
 
 
 # Print the response 
-print("Created new IAM role: ", response)
+print("Created new IAM role: ", response,"\n")
 
 # Get the role ARN from the response
 role_arn = response['Role']['Arn']
@@ -76,7 +76,7 @@ response = iam.attach_role_policy(
     PolicyArn=policy_arn
 )
 # Print the response
-print("Attached policy to role: ", response)
+print("Attached policy to role: ", response,"\n")
 
 
 # Attach the policy to the user
@@ -88,4 +88,4 @@ response = iam.attach_user_policy(
 )
 
 # Print the response
-print("Attached policy to role: ", response)
+print("Attached policy to user: ", response,"\n")
