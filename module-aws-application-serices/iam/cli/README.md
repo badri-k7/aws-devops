@@ -20,3 +20,7 @@
     ```bash
     aws iam attach-user-policy --user-name study_iam_user --policy-arn <policy-arn>
     ```
+6. To set an initial password for an IAM user
+    ```bash
+    aws iam create-login-profile --user-name <USER-NAME> --password <PASSWORD> --no-password-reset-required
+    ```
