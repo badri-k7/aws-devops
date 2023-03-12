@@ -17,7 +17,7 @@ protocol = 'email'
 endpoint = 'user@example.com'
 subscription_arn = sns.subscribe(TopicArn=topic_arn, Protocol=protocol, Endpoint=endpoint)['SubscriptionArn']
 
-# Sleep for 120 seconds
+# Sleep for 60 seconds
 time.sleep(60)
 
 # Send a message to the topic
