@@ -70,3 +70,8 @@
 
 ## SWF
   The SWF directory contains a subdirectory with the readme instructions for using SWF with Boto3
+
+## Codeguru Profiler
+  The Codeguru-Profiler directory cotains a subdirectory for using Codeguru profiler with boto3
+
+  - `codeguru-profiler/boto3/hands-on-with-profiler.py`: This file contains a Python script for using AWS Codeguru Profiler with the lambda function.
