@@ -11,7 +11,8 @@
   - [IAM handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/iam/boto3)
   - [KMS handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/kms/boto3)
   - [SQS handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/sqs/boto3)
-  - [SWF handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/iam/boto3)
+  - [SWF handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/swf/boto3)
+  - [Codeguru handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/codeguru-profiler/boto3)
   
 
 
