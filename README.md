@@ -1,3 +1,9 @@
+# Getting started
+  Welcome to the "Hands-On with AWS Application Services" repository! This repository is designed to help you explore and learn various AWS application services through practical examples and hands-on exercises using both Boto3 and AWS CLI. 
+  
+  - Clone the repository to your local machine.
+  - Follow the README files provided in each service folder for detailed instructions on using the examples.
+
 **Table of Contents**
 
 - [Introduction](https://github.com/badri-k7/aws-devops/tree/main/introduction)
@@ -14,8 +20,6 @@
   - [SWF handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/swf/boto3)
   - [Codeguru handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/codeguru-profiler/boto3)
   
-
-
 # Introduction
 
   The "Introduction" directory contains several markdown files with instructions for installing and deploying various AWS services using AWS CLI and Boto3.
