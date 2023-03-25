@@ -19,7 +19,7 @@
   - [SQS handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/sqs/boto3)
   - [SWF handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/swf/boto3)
   - [Codeguru handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/codeguru-profiler/boto3)
-  
+  - [X-Ray Handson](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/x-ray)
 # Introduction
 
   The "Introduction" directory contains several markdown files with instructions for installing and deploying various AWS services using AWS CLI and Boto3.
