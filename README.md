@@ -80,3 +80,6 @@
   The Codeguru-Profiler directory cotains a subdirectory for using Codeguru profiler with boto3
 
   - `codeguru-profiler/boto3/hands-on-with-profiler.py`: This file contains a Python script for using AWS Codeguru Profiler with the lambda function.
+
+## X-Ray
+  The x-ray directory contains the readme instructions to deploy a sample application to generate the necessary distributed traces. This allows you to understand and gain deeper understanding of x-ray capabilities.
