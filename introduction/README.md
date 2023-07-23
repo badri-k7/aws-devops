@@ -10,7 +10,13 @@ Before starting with the modules, ensure that you have the necessary setups. Fol
 
 2. [Install Python, pip and Boto3](./1.prerequesites/2.install-python-pip.md): Python and pip are essential for running Boto3 scripts. Boto3 is the Amazon Web Services (AWS) SDK for Python, which allows Python developers to write software that makes use of AWS services like Amazon S3, Amazon EC2, etc.
 
-3. [Setup Default VPC and Key Pair](./1.prerequesites/3.setup.py): This script will guide you through setting up a default VPC if it does not exist, or describing the default VPC if it already exists. It will also generate a key pair for accessing the EC2 instance.
+3. [Setup Default VPC and Key Pair](./1.prerequesites/3.setup.py): This script will guide you through setting up a default VPC if it does not exist or describing the default VPC if it already exists. It will also generate a key pair for accessing the EC2 instance.
+
+    Upon completion of this script, make sure to:
+
+    - Copy and save the Security Group ID and Subnet ID; you'll need these for later modules.
+    - Download the private key file for the key pair (`awsug-workshop-keypair.pem`), and keep it secure. This key file is necessary to connect to your EC2 instances.
+    - Configure the private key in your local SSH configuration. If you're using a UNIX-like system (Linux, MacOS), you can generally do this by adding the private key to the SSH agent with the `ssh-add` command. If you're on Windows and using Putty, you'll need to convert the `.pem` file into a `.ppk` file using PuttyGen and then configure Putty to use it. If you're unsure about this step, just keep the key safe—you'll need it to access the EC2 instance later.
 
 After you've completed the prerequisites, proceed with the following modules:
 
