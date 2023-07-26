@@ -25,19 +25,15 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 
 # Introduction
 
-  The "Introduction" directory contains several markdown files with instructions for installing and deploying various AWS services using AWS CLI and Boto3.
+  The "Introduction" directory consists of various markdown files, providing instructions for installing and deploying different AWS services using AWS CLI and Boto3.
 
-  - `0.install-aws-cli.md`: This file contains instructions for installing the AWS Command Line Interface (CLI) on your local machine.
+  - `1.prerequisites/1.install-aws-cli.md`: Contains instructions for installing AWS CLI on your local machine.
+  - `1.prerequisites/2.install-python-pip.md`: Contains instructions for installing Python pip on your local machine.
+  - `2.ec2/1.deploy-ec2-using-aws-cli.md`: Provides guidelines for deploying an EC2 instance using AWS CLI.
+  - `2.ec2/2.deploy-ec2-using-boto3.md`: Contains instructions for deploying an EC2 instance using Boto3.
+  - `3.s3/1.create-s3-bucket-and-upload-file-using-cli.md`: Contains instructions for creating an S3 bucket and uploading a file using AWS CLI.
+  - `3.s3/2.create-s3-bucket-using-boto3.md`: Provides guidelines for creating an S3 bucket using Boto3.
 
-  - `1.install-python-pip.md`: This file contains instructions for installing pip, the package installer for Python, on your local machine.
-
-  - `2.deploy-ec2-using-aws-cli.md`: This file contains instructions for deploying an EC2 instance using the AWS CLI.
-
-  - `3.deploy-ec2-using-boto3.md`: This file contains instructions for deploying an EC2 instance using Boto3, the AWS SDK for Python.
-
-  - `4.create-s3-bucket-using-boto3.md`: This file contains instructions for creating an S3 bucket using Boto3.
-
-  - `5.create-s3-bucket-and-upload-file-using-cli.md`: This file contains instructions for creating an S3 bucket and uploading a file to it using the AWS CLI.
 
 # Module AWS Application Services
   The "Module AWS Application Services" directory contains several subdirectories for different AWS services such as DynamoDB, IAM, KMS, SNS, SQS, and SWF. Each service directory contains markdown files with instructions for using the service with either AWS CLI or Boto3, as well as additional files and directories related to the service.
@@ -45,15 +41,13 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 ## DynamoDB
   The DynamoDB directory contains subdirectories for using DynamoDB with AWS CLI, Boto3, and for local development.
 
-  - `dynamodb/boto3/1.create-table.md`: This file contains instructions for creating a DynamoDB table using Boto3.
-
-  - `dynamodb/boto3/2.crud-operations.md`: This file contains instructions for performing CRUD operations on a DynamoDB table using Boto3.
+  - `dynamodb/boto3/1.create-table.md`: Contains instructions for creating a DynamoDB table using Boto3.
+  
+  - `dynamodb/boto3/2.crud-operations.md`: Provides guidelines for performing CRUD operations on a DynamoDB table using Boto3.
 
   - `dynamodb/cli/1.create-table.md`: This file contains instructions for creating a DynamoDB table using AWS CLI.
 
   - `dynamodb/cli/2.crud-operations.md`: This file contains instructions for performing CRUD operations on a DynamoDB table using AWS CLI.
-
-  - `dynamodb/ddb-local-dev/install-dynamodb-local.md`: This file contains instructions for installing DynamoDB Local, a local development version of DynamoDB, on your local machine.
 
 ## IAM
   The IAM directory contains subdirectories for using IAM with AWS CLI and Boto3.
