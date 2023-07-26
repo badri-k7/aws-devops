@@ -18,7 +18,6 @@ Before starting with the modules, ensure that you have the necessary setups. Fol
     - Download the private key file for the key pair (`awsug-workshop-keypair.pem`), and keep it secure. This key file is necessary to connect to your EC2 instances.
     - Configure the private key in your local SSH configuration. If you're using a UNIX-like system (Linux, MacOS), you can generally do this by adding the private key to the SSH agent with the `ssh-add` command. If you're on Windows and using Putty, you'll need to convert the `.pem` file into a `.ppk` file using PuttyGen and then configure Putty to use it. If you're unsure about this step, just keep the key safe—you'll need it to access the EC2 instance later.
 
-
 After you've completed the prerequisites, proceed with the following modules:
 
 ## EC2 Module
