@@ -1,17 +1,19 @@
 # Getting started
-  Welcome to the "Hands-On with AWS Application Services" repository! This repository is designed to help you explore and learn various AWS application services through practical examples and hands-on exercises using both Boto3 and AWS CLI. 
-  
-  - Clone the repository to your local machine.
-  - Follow the README files provided in each service folder for detailed instructions on using the examples.
+Welcome to the "Hands-On with AWS Application Services" repository! This repository is designed to help you explore and learn various AWS application services through practical examples and hands-on exercises using both Boto3 and AWS CLI.
+
+- Clone the repository to your local machine.
+- Follow the README files provided in each service folder for detailed instructions on using the examples.
 
 **Table of Contents**
 
 - [Introduction](https://github.com/badri-k7/aws-devops/tree/main/introduction)
-  - [Install AWS CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/0.install-aws-cli.md)
-  - [Deploy EC2 using AWS CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/2.deploy-ec2-using-aws-cli.md)
-  - [Deploy EC2 using boto3](https://github.com/badri-k7/aws-devops/blob/main/introduction/3.deploy-ec2-using-boto3.md)
-  - [Create S3 buckets using CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/4.create-s3-bucket-and-upload-file-using-cli.md)
-  - [Create S3 bucket using boto3](https://github.com/badri-k7/aws-devops/blob/main/introduction/5.create-s3-bucket-using-boto3.md)
+  - [Prerequisites](https://github.com/badri-k7/aws-devops/blob/main/introduction/1.prerequesites)
+    - [Install AWS CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/1.prerequesites/1.install-aws-cli.md)
+    - [Install Python pip](https://github.com/badri-k7/aws-devops/blob/main/introduction/1.prerequesites/2.install-python-pip.md)
+  - [Deploy EC2 using AWS CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/2.ec2/1.deploy-ec2-using-aws-cli.md)
+  - [Deploy EC2 using boto3](https://github.com/badri-k7/aws-devops/blob/main/introduction/2.ec2/2.deploy-ec2-using-boto3.md)
+  - [Create S3 buckets using CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/3.s3/1.create-s3-bucket-and-upload-file-using-cli.md)
+  - [Create S3 bucket using boto3](https://github.com/badri-k7/aws-devops/blob/main/introduction/3.s3/2.create-s3-bucket-using-boto3.md)
 - [AWS Application Services](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices)
   - [DynamoDB handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/dynamodb/boto3)
   - [IAM handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/iam/boto3)
@@ -20,6 +22,7 @@
   - [SWF handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/swf/boto3)
   - [Codeguru handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/codeguru-profiler/boto3)
   - [X-Ray Handson](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/x-ray)
+
 # Introduction
 
   The "Introduction" directory contains several markdown files with instructions for installing and deploying various AWS services using AWS CLI and Boto3.
