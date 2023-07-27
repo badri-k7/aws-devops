@@ -6,25 +6,27 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 
 **Table of Contents**
 
-- [Introduction](https://github.com/badri-k7/aws-devops/tree/main/introduction)
-  - [Prerequisites](https://github.com/badri-k7/aws-devops/blob/main/introduction/1.prerequesites)
-    - [Install AWS CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/1.prerequesites/1.install-aws-cli.md)
-    - [Install Python pip](https://github.com/badri-k7/aws-devops/blob/main/introduction/1.prerequesites/2.install-python-pip.md)
-  - [Deploy EC2 using AWS CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/2.ec2/1.deploy-ec2-using-aws-cli.md)
-  - [Deploy EC2 using boto3](https://github.com/badri-k7/aws-devops/blob/main/introduction/2.ec2/2.deploy-ec2-using-boto3.md)
-  - [Create S3 buckets using CLI](https://github.com/badri-k7/aws-devops/blob/main/introduction/3.s3/1.create-s3-bucket-and-upload-file-using-cli.md)
-  - [Create S3 bucket using boto3](https://github.com/badri-k7/aws-devops/blob/main/introduction/3.s3/2.create-s3-bucket-using-boto3.md)
-- [AWS Application Services](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices)
-  - [DynamoDB handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/dynamodb/boto3)
-  - [DynamoDB handson with CLI](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/dynamodb/boto3)
-  - [SQS handson with Boto3](https://github.com/badri-k7/aws-devops/tree/main/module-aws-application-serices/sqs/boto3)
+
+- [Introduction](./introduction)
+  - [Prerequisites](./introduction/1.prerequesites)
+    - [Local Development Environment Setup](./introduction/1.prerequesites/local-dev)
+    - [Remote Development Environment Setup](./introduction/1.prerequesites/remote-dev)
+  - [Deploy EC2 using AWS CLI](./introduction/2.ec2/1.deploy-ec2-using-aws-cli.md)
+  - [Deploy EC2 using boto3](./introduction/2.ec2/2.deploy-ec2-using-boto3.md)
+  - [Create S3 buckets using CLI](./introduction/3.s3/1.create-s3-bucket-and-upload-file-using-cli.md)
+  - [Create S3 bucket using boto3](./introduction/3.s3/2.create-s3-bucket-using-boto3.md)
+- [AWS Application Services](./module-aws-application-serices)
+  - [DynamoDB handson with Boto3](./module-aws-application-serices/dynamodb/boto3)
+  - [DynamoDB handson with CLI](./module-aws-application-serices/dynamodb/cli)
+  - [SQS handson with Boto3](./module-aws-application-serices/sqs/boto3)
+
 
 # Introduction
 
   The "Introduction" directory consists of various markdown files, providing instructions for installing and deploying different AWS services using AWS CLI and Boto3.
 
   - `1.prerequisites/1.install-aws-cli.md`: Contains instructions for installing AWS CLI on your local machine.
-  - `1.prerequisites/2.install-python-pip.md`: Contains instructions for installing Python pip on your local machine.
+  - `1.prerequisites/2.install-python-pip-boto3.md`: Contains instructions for installing Python pip and boto3 on your local machine.
   - `2.ec2/1.deploy-ec2-using-aws-cli.md`: Provides guidelines for deploying an EC2 instance using AWS CLI.
   - `2.ec2/2.deploy-ec2-using-boto3.md`: Contains instructions for deploying an EC2 instance using Boto3.
   - `3.s3/1.create-s3-bucket-and-upload-file-using-cli.md`: Contains instructions for creating an S3 bucket and uploading a file using AWS CLI.
