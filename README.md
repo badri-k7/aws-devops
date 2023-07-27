@@ -6,7 +6,6 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 
 **Table of Contents**
 
-
 - [Introduction](./introduction)
   - [Prerequisites](./introduction/1.prerequesites)
     - [Local Development Environment Setup](./introduction/1.prerequesites/local-dev)
@@ -23,16 +22,9 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 
 # Introduction
 
-  The "Introduction" directory consists of various markdown files, providing instructions for installing and deploying different AWS services using AWS CLI and Boto3.
+  The "Introduction" directory is your first step into this hands-on workshop. It offers a set of preliminary materials that prepare you for the rest of the modules. Please visit the "local-dev" directory for instructions on setting up your local AWS development environment or the "remote-dev" directory if you are planning to set up a remote environment.
 
-  - `1.prerequisites/1.install-aws-cli.md`: Contains instructions for installing AWS CLI on your local machine.
-  - `1.prerequisites/2.install-python-pip-boto3.md`: Contains instructions for installing Python pip and boto3 on your local machine.
-  - `2.ec2/1.deploy-ec2-using-aws-cli.md`: Provides guidelines for deploying an EC2 instance using AWS CLI.
-  - `2.ec2/2.deploy-ec2-using-boto3.md`: Contains instructions for deploying an EC2 instance using Boto3.
-  - `3.s3/1.create-s3-bucket-and-upload-file-using-cli.md`: Contains instructions for creating an S3 bucket and uploading a file using AWS CLI.
-  - `3.s3/2.create-s3-bucket-using-boto3.md`: Provides guidelines for creating an S3 bucket using Boto3.
-
-
+ 
 # Module AWS Application Services
   The "Module AWS Application Services" directory contains several subdirectories for different AWS services such as DynamoDB and SQS. Each service directory contains markdown files with instructions for using the service with either AWS CLI or Boto3, as well as additional files and directories related to the service.
 
