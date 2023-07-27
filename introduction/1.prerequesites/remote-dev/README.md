@@ -45,7 +45,14 @@ This repositoty contains the instructions needed to run this workshop
 
 After you've completed the prerequisites, proceed with the following modules:
 
+## EC2 Module
 
-## Conclusion
+1. [Deploy EC2 instance using AWS CLI]( ../../2.ec2/1.deploy-ec2-using-aws-cli.md): Learn how to deploy an EC2 instance using AWS CLI in this module.
 
-That's it! You have now successfully launched AWS CloudShell from your laptop. You can now interact with your AWS resources directly from your browser.
+2. [Deploy EC2 instance using Boto3](../../2.ec2/2.deploy-ec2-using-boto3.md): This module provides instructions to deploy an EC2 instance using Python's Boto3 library.
+
+## S3 Module
+
+1. [Create S3 bucket and upload file using CLI](../../3.s3/1.create-s3-bucket-and-upload-file-using-cli.md): This module guides you on creating an S3 bucket and uploading a file using AWS CLI.
+
+2. [Create S3 bucket using Boto3](../../3.s3/2.create-s3-bucket-using-boto3.md): Learn how to create an S3 bucket using Python's Boto3 library in this module.
