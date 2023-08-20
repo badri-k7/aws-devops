@@ -1,0 +1,22 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'ECS Cluster CloudFormation Template'
+# Resource 
+# ECSCluster: This defines an ECS cluster resource with a name of "MyECSCluster".
+
+Resources:
+  ECSCluster:
+    Type: 'AWS::ECS::Cluster'
+    Properties:
+      ClusterName: 'MyECSCluster'
+
+# Outputs:
+# ECSClusterName: Outputs the name of the created ECS cluster.
+# ECSClusterArn: Outputs the ARN (Amazon Resource Name) of the created ECS cluster.
+Outputs:
+  ECSClusterName:
+    Description: 'Name of the ECS Cluster'
+    Value: !Ref ECSCluster
+  ECSClusterArn:
+    Description: 'ARN of the ECS Cluster'
+    Value: !GetAtt ECSCluster.Arn

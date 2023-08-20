@@ -1,0 +1,48 @@
+Resources:
+  FargateTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: 'my-fargate-task-definition'
+      NetworkMode: 'awsvpc'
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: '256'
+      Memory: '0.5GB'
+      ExecutionRoleArn: !Ref EcsTaskExecutionRole
+      ContainerDefinitions:
+        - Name: 'my-container'
+          Image: 'amazonlinux:2'
+          Memory: 512
+          Cpu: 256
+          Essential: true
+          PortMappings:
+            - ContainerPort: 80
+  FargateService:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: 'my-fargate-service'
+      Cluster: 'MyECSCluster' # Replace with your cluster name or ARN
+      LaunchType: 'FARGATE'
+      TaskDefinition: !Ref FargateTaskDefinition
+      DesiredCount: 1
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: 'ENABLED'
+          Subnets: 
+            - 'subnet-xxxx' # Replace with your subnet ID
+          SecurityGroups: 
+            - 'sg-xxxx' # Replace with your security group ID            
+
+  EcsTaskExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: 'ecsTaskExecutionRole'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service: 'ecs-tasks.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
