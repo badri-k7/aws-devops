@@ -1,0 +1,84 @@
+Parameters:
+  ECSClusterName:
+    Description: Name of the ECS Cluster
+    Type: String
+    Default: "MyECSCluster"
+
+  ECSServiceName:
+    Description: Name of the ECS Service
+    Type: String
+    Default: "my-fargate-service"
+
+Resources:
+
+  EcsServiceScalableTarget:
+    Type: 'AWS::ApplicationAutoScaling::ScalableTarget'
+    Properties:
+      MaxCapacity: 10
+      MinCapacity: 1
+      ResourceId: !Sub service/${ECSClusterName}/${ECSServiceName}
+      RoleARN: !GetAtt EcsAutoScalingRole.Arn
+      ScalableDimension: ecs:service:DesiredCount
+      ServiceNamespace: ecs
+
+  ECSServiceScalingPolicy:
+    Type: 'AWS::ApplicationAutoScaling::ScalingPolicy'
+    Properties:
+      PolicyName: StepPolicy
+      PolicyType: StepScaling
+      ScalingTargetId: !Ref EcsServiceScalableTarget
+      StepScalingPolicyConfiguration:
+        AdjustmentType: PercentChangeInCapacity
+        Cooldown: 60
+        MetricAggregationType: Average
+        StepAdjustments:
+          - MetricIntervalLowerBound: 0
+            ScalingAdjustment: 1
+
+  CloudWatchAlarmHighCPU:
+    Type: 'AWS::CloudWatch::Alarm'
+    Properties:
+      AlarmDescription: Alarm if CPU too high or metric disappears indicating instance is down
+      Namespace: AWS/ECS
+      MetricName: CPUUtilization
+      Statistic: Average
+      Period: 300
+      EvaluationPeriods: 2
+      Threshold: 75
+      ComparisonOperator: GreaterThanThreshold
+      Dimensions:
+        - Name: ServiceName
+          Value: !Ref ECSServiceName
+        - Name: ClusterName
+          Value: !Ref ECSClusterName
+      AlarmActions:
+        - !Ref ECSServiceScalingPolicy
+
+  EcsAutoScalingRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: "EcsWorkshopAutoScalingRole"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "application-autoscaling.amazonaws.com"
+            Action: "sts:AssumeRole"
+
+  EcsAutoScalingRolePolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "ECSAutoScalingPolicy"
+      Roles: [!Ref EcsAutoScalingRole]
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Action:
+              - "ecs:DescribeServices"
+              - "ecs:UpdateService"
+              - "application-autoscaling:*"
+              - "cloudwatch:DescribeAlarms"
+              - "cloudwatch:PutMetricAlarm"
+            Resource: "*"

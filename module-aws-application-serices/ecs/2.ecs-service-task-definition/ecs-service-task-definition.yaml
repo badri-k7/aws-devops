@@ -1,0 +1,64 @@
+Resources:
+  FargateTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: 'my-fargate-task-definition'
+      NetworkMode: 'awsvpc'
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: '256'
+      Memory: '0.5GB'
+      ExecutionRoleArn: !Ref EcsTaskExecutionRole
+      ContainerDefinitions:
+        - Name: 'my-container'
+          Image: 'amazonlinux:2'
+          Memory: 512
+          Cpu: 256
+          Essential: true
+          Command:
+            - "/bin/sh"
+            - "-c"
+            - "while true; do echo hello world; sleep 30; done"
+          PortMappings:
+            - ContainerPort: 80
+          LogConfiguration:
+            LogDriver: "awslogs"
+            Options:
+              awslogs-group: !Ref MyLogGroup
+              awslogs-region: "ap-southeast-1" # Change this to your region
+              awslogs-stream-prefix: "ecs"            
+  FargateService:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: 'my-fargate-service'
+      Cluster: 'MyECSCluster' # Replace with your cluster name or ARN
+      LaunchType: 'FARGATE'
+      TaskDefinition: !Ref FargateTaskDefinition
+      DesiredCount: 1
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: 'ENABLED'
+          Subnets: 
+            - 'subnet-xxxx' # Replace with your subnet ID
+          SecurityGroups: 
+            - 'sg-xxxx' # Replace with your security group ID            
+
+  EcsTaskExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: 'ecsTaskExecutionRole'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: 'Allow'
+            Principal:
+              Service: 'ecs-tasks.amazonaws.com'
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+  
+  MyLogGroup:
+    Type: "AWS::Logs::LogGroup"
+    Properties: 
+      LogGroupName: "/ecs/my-log-group"
+      RetentionInDays: 14 # This is optional; defines how long to keep logs. Adjust as necessary.
