@@ -55,3 +55,21 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
   - `sqs/boto3/2.send-messages-to-queue.md`: This markdown file provides guidelines on how to send messages to an SQS queue using Boto3.
   
   - `sqs/boto3/3.process-message-from-queue.md`: This markdown file demonstrates how to process messages from an SQS queue using Boto3.
+
+## Containers
+  The "Containers" directory delves into containerized solutions on AWS.
+
+  - `containers/1.install-docker/README.md`: Instructions on installing Docker on your local machine.
+    
+  - `containers/2.docker-hello-world/README.md`: A quick start guide to run your first Docker container.
+    
+  - `containers/3.docker-deep-dive/README.md`: A deeper dive into Docker, understanding its components and architecture.
+
+  ## ECS
+  The "ECS" directory provides hands-on experience with Amazon Elastic Container Service using CloudFormation.
+
+  - `ecs/1.ecs-cluster/README.md`: Steps to set up an ECS cluster using CloudFormation.
+    
+  - `ecs/2.ecs-service-task-definition/README.md`: Guidelines on defining and running ECS services and task definitions using CloudFormation.
+    
+  - `ecs/3.ecs-scaling-policies/README.md`: Dive into the scaling policies and set them up for your ECS services using CloudFormation.
