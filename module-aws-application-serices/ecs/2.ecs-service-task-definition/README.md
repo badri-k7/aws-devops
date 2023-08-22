@@ -35,9 +35,15 @@ Resources:
           Command:
             - "/bin/sh"
             - "-c"
-            - "while true; do echo hello world; sleep 30; done"          
+            - "while true; do echo hello world; sleep 30; done"
           PortMappings:
             - ContainerPort: 80
+          LogConfiguration:
+            LogDriver: "awslogs"
+            Options:
+              awslogs-group: !Ref MyLogGroup
+              awslogs-region: "ap-southeast-1" # Change this to your region
+              awslogs-stream-prefix: "ecs"            
   FargateService:
     Type: AWS::ECS::Service
     Properties:
@@ -67,6 +73,12 @@ Resources:
             Action: 'sts:AssumeRole'
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+  
+  MyLogGroup:
+    Type: "AWS::Logs::LogGroup"
+    Properties: 
+      LogGroupName: "/ecs/my-log-group"
+      RetentionInDays: 14 # This is optional; defines how long to keep logs. Adjust as necessary.
 ```
 
 This CloudFormation template defines an ECS Task Definition and a Fargate service.
