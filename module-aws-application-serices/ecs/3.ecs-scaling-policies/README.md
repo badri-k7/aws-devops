@@ -94,7 +94,7 @@ aws cloudformation deploy \
   --parameter-overrides ECSClusterName=YourClusterName ECSServiceName=YourServiceName
 ```
 
-Remember to replace `YourStackName` with the name of your CloudFormation stack and `YourServiceName` with the name of your ECS Service.
+Remember to replace `YourStackName` with the name of your CloudFormation stack. Followed by `YourClusterName` and `YourServiceName` with the name of your ECS Cluster and ECS Service.
 
 ### Step 3: Monitoring with Amazon CloudWatch
 

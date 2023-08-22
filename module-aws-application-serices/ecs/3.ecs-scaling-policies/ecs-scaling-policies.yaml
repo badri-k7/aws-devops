@@ -29,7 +29,7 @@ Resources:
       ScalingTargetId: !Ref EcsServiceScalableTarget
       StepScalingPolicyConfiguration:
         AdjustmentType: PercentChangeInCapacity
-        CoolDown: 60
+        Cooldown: 60
         MetricAggregationType: Average
         StepAdjustments:
           - MetricIntervalLowerBound: 0

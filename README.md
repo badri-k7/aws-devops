@@ -18,6 +18,14 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
   - [DynamoDB handson with Boto3](./module-aws-application-serices/dynamodb/boto3)
   - [DynamoDB handson with CLI](./module-aws-application-serices/dynamodb/cli)
   - [SQS handson with Boto3](./module-aws-application-serices/sqs/boto3)
+  - [Container handson with AWS](./module-aws-application-serices/containers)
+    - [Install Docker](./module-aws-application-serices/containers/1.install-docker)
+    - [Docker Hello World](./module-aws-application-serices/containers/2.docker-hello-world)
+    - [Docker Deep Dive](./module-aws-application-serices/containers/3.docker-deep-dive)
+  - [ECS hands on with Cloudformation](./module-aws-application-serices/ecs)
+    - [ECS Cluster](./module-aws-application-serices/ecs/1.ecs-cluster)
+    - [ECS Service and Task Definition](./module-aws-application-serices/ecs/2.ecs-service-task-definition)
+    - [ECS Scaling Policies](./module-aws-application-serices/ecs/3.ecs-scaling-policies)
 
 
 # Introduction
@@ -26,7 +34,7 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 
  
 # Module AWS Application Services
-  The "Module AWS Application Services" directory contains several subdirectories for different AWS services such as DynamoDB and SQS. Each service directory contains markdown files with instructions for using the service with either AWS CLI or Boto3, as well as additional files and directories related to the service.
+  The "Module AWS Application Services" directory contains several subdirectories for different AWS services such as DynamoDB, SQS, Containers, and ECS. Each service directory contains markdown files with instructions for using the service with either AWS CLI or Boto3, as well as additional files and directories related to the service.
 
 ## DynamoDB
   The DynamoDB directory contains subdirectories for using DynamoDB with AWS CLI, Boto3, and for local development.
