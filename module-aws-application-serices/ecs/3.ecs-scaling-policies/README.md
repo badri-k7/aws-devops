@@ -7,19 +7,6 @@ In this section, you will scale and monitor the ECS service that was previously 
 1. You'll be working with a CloudFormation template named `ecs-service-scaling.yaml`. If you're creating one from scratch or modifying an existing one, ensure it includes the following content. For the purpose of this workshop, a conveniently pre-configured template named "`ecs-scaling-policies.yaml`" is available for you to use.
 
 ```yaml
-Parameters:
-  ECSClusterName:
-    Description: Name of the ECS Cluster
-    Type: String
-
-  ECSServiceName:
-    Description: Name of the ECS Service
-    Type: String
-
-  EcsAutoScalingRoleName:
-    Description: Name of the ECS Auto Scaling Role
-    Type: String
-
 Resources:
 
   EcsServiceScalableTarget:
@@ -28,14 +15,14 @@ Resources:
       MaxCapacity: 10
       MinCapacity: 1
       ResourceId: !Sub service/${ECSClusterName}/${ECSServiceName}
-      RoleARN: !Sub arn:aws:iam::${AWS::AccountId}:role/${EcsAutoScalingRoleName}
+      RoleARN: !GetAtt EcsAutoScalingRole.Arn
       ScalableDimension: ecs:service:DesiredCount
       ServiceNamespace: ecs
 
   ECSServiceScalingPolicy:
     Type: 'AWS::ApplicationAutoScaling::ScalingPolicy'
     Properties:
-      PolicyName: AStepPolicy
+      PolicyName: StepPolicy
       PolicyType: StepScaling
       ScalingTargetId: !Ref EcsServiceScalableTarget
       StepScalingPolicyConfiguration:
@@ -64,6 +51,35 @@ Resources:
           Value: !Ref ECSClusterName
       AlarmActions:
         - !Ref ECSServiceScalingPolicy
+
+  EcsAutoScalingRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      RoleName: !Ref EcsAutoScalingRoleName
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service: "application-autoscaling.amazonaws.com"
+            Action: "sts:AssumeRole"
+
+  EcsAutoScalingRolePolicy:
+    Type: "AWS::IAM::Policy"
+    Properties:
+      PolicyName: "ECSAutoScalingPolicy"
+      Roles: [!Ref EcsAutoScalingRole]
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Action:
+              - "ecs:DescribeServices"
+              - "ecs:UpdateService"
+              - "application-autoscaling:*"
+              - "cloudwatch:DescribeAlarms"
+              - "cloudwatch:PutMetricAlarm"
+            Resource: "*"
 ```
 
 ### Step 2: Update the CloudFormation Stack with Scaling Configurations
@@ -71,10 +87,14 @@ Resources:
 Using AWS CLI, apply the updated scaling template:
 
 ```bash
-aws cloudformation deploy --template-file ecs-service-scaling.yaml --stack-name YourStackName --capabilities CAPABILITY_NAMED_IAM
+aws cloudformation deploy \
+  --template-file ecs-service-scaling.yaml \
+  --stack-name YourStackName \
+  --capabilities CAPABILITY_NAMED_IAM \
+  --parameter-overrides ECSClusterName=YourClusterName ECSServiceName=YourServiceName
 ```
 
-Remember to replace `YourStackName` with the name of your CloudFormation stack
+Remember to replace `YourStackName` with the name of your CloudFormation stack and `YourServiceName` with the name of your ECS Service.
 
 ### Step 3: Monitoring with Amazon CloudWatch
 
