@@ -12,7 +12,7 @@ In this guide, you will learn how to create an ECS Task Definition for Fargate u
 
 #### 1. **Create the CloudFormation Template**:
 
-Save the following content to a file named `ecs-fargate-task-definition.yml`.
+Refer to the `ecs-fargate-task-definition.yaml` file in your current working directory. Take a moment to familiarize yourself with the content of the file before proceeding with the hands-on instructions below.
 
 ```yaml
 Resources:
@@ -32,6 +32,10 @@ Resources:
           Memory: 512
           Cpu: 256
           Essential: true
+          Command:
+            - "/bin/sh"
+            - "-c"
+            - "while true; do echo hello world; sleep 30; done"          
           PortMappings:
             - ContainerPort: 80
   FargateService:
@@ -62,10 +66,10 @@ Resources:
               Service: 'ecs-tasks.amazonaws.com'
             Action: 'sts:AssumeRole'
       ManagedPolicyArns:
-        - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'     
+        - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
 ```
 
-This CloudFormation template defines an ECS Task Definition for Fargate.
+This CloudFormation template defines an ECS Task Definition and a Fargate service.
 
 #### 2. **Deploy the CloudFormation Template**:
 
@@ -81,10 +85,14 @@ Go to the AWS Management Console:
 - Navigate to CloudFormation.
 - Look for the `MyFargateTaskDefinition` stack and verify its status is `CREATE_COMPLETE`.
 
-Additionally, you can check in the ECS dashboard:
-- Navigate to the Task Definitions on the ECS dashboard.
-- You should see `my-fargate-task-definition` in the list of task definitions.
+Additionally, verify the setup in the ECS dashboard:
+1. Navigate to the ECS dashboard in the AWS Management Console.
+2. In the left sidebar, click on **Task Definitions**. You should see `my-fargate-task-definition` listed among the task definitions.
+3. Next, click on **Clusters** in the left sidebar.
+4. Select your cluster (e.g., `MyECSCluster`).
+5. Within the **Services** tab, you should see your service (e.g., `my-fargate-service`) listed and running. This verifies that both your task definition and service have been created successfully.
+
 
 ### Conclusion
 
-Congratulations! You've successfully used CloudFormation to create and register a Fargate Task Definition under your ECS cluster. This task definition can now be used to launch containers under the Fargate launch type within your ECS cluster.
+Congratulations! You've successfully used CloudFormation to create, register a Fargate Task Definition, and establish an ECS Service under your ECS cluster. This task definition and service combination enables you to seamlessly launch containers using the Fargate launch type within your ECS cluster.

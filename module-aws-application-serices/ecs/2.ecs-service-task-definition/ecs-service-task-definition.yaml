@@ -15,6 +15,10 @@ Resources:
           Memory: 512
           Cpu: 256
           Essential: true
+          Command:
+            - "/bin/sh"
+            - "-c"
+            - "while true; do echo hello world; sleep 30; done"
           PortMappings:
             - ContainerPort: 80
   FargateService:

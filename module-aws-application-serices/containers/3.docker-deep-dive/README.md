@@ -52,9 +52,10 @@ aws ecr create-repository --repository-name hello-world
 ```
 Authenticate Docker to the ECR registry:
 ```bash
-$(aws ecr get-login --no-include-email --region your-region-name)
+aws ecr get-login-password --region your-region-name | docker login --username AWS --password-stdin your-account-id.dkr.ecr.your-region-name.amazonaws.com
 ```
-Replace your-region-name with your AWS region, for example ap-southeast-1.
+Replace `your-region-name` with your AWS region, for example `ap-southeast-1`, and `your-account-id` with your AWS account ID.
+
 Tag your image for the ECR repository:
 ```bash
 docker tag hello-world:latest your-account-id.dkr.ecr.your-region-name.amazonaws.com/hello-world:latest
