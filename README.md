@@ -19,9 +19,8 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
   - [DynamoDB handson with CLI](./module-aws-application-serices/dynamodb/cli)
   - [SQS handson with Boto3](./module-aws-application-serices/sqs/boto3)
   - [Container handson with AWS](./module-aws-application-serices/containers)
-    - [Install Docker](./module-aws-application-serices/containers/1.install-docker)
-    - [Docker Hello World](./module-aws-application-serices/containers/2.docker-hello-world)
-    - [Docker Deep Dive](./module-aws-application-serices/containers/3.docker-deep-dive)
+    - [Docker Hello World](./module-aws-application-serices/containers/1.docker-hello-world)
+    - [Docker Deep Dive](./module-aws-application-serices/containers/2.docker-deep-dive)
   - [ECS hands on with Cloudformation](./module-aws-application-serices/ecs)
     - [ECS Cluster](./module-aws-application-serices/ecs/1.ecs-cluster)
     - [ECS Service and Task Definition](./module-aws-application-serices/ecs/2.ecs-service-task-definition)
@@ -58,12 +57,10 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
 
 ## Containers
   The "Containers" directory delves into containerized solutions on AWS.
-
-  - `containers/1.install-docker/README.md`: Instructions on installing Docker on your local machine.
     
-  - `containers/2.docker-hello-world/README.md`: A quick start guide to run your first Docker container.
+  - `containers/1.docker-hello-world/README.md`: A quick start guide to run your first Docker container.
     
-  - `containers/3.docker-deep-dive/README.md`: A deeper dive into Docker, understanding its components and architecture.
+  - `containers/2.docker-deep-dive/README.md`: A deeper dive into Docker, understanding its components and architecture.
 
   ## ECS
   The "ECS" directory provides hands-on experience with Amazon Elastic Container Service using CloudFormation.
