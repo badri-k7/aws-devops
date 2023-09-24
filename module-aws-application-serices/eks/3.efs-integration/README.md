@@ -75,6 +75,7 @@ Update your EKS cluster configurations or deployment manifests to use the EFS fi
 Example EKS Pod manifest snippet:
 
 ```yaml
+# Create my-efs-pod.yaml file
 apiVersion: v1
 kind: Pod
 metadata:
@@ -105,7 +106,7 @@ kubectl apply -f my-efs-pod.yaml
 Check if your EKS pods are running and confirm that they can read/write to the EFS filesystem.
 
 ```bash
-kubectl exec -it <your_pod_name> -- /bin/bash
+kubectl exec -it my-efs-pod -- /bin/bash
 # inside the pod
 cd /shared-data
 touch test-file
