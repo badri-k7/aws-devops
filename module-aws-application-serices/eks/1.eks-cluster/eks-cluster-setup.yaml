@@ -113,3 +113,9 @@ Outputs:
       Ref: "PublicSubnet2"
     Export:
       Name: "EKSCluster::SubnetId2"
+  VpcId:
+    Description: "The ID of the provisioned VPC"
+    Value: 
+      Ref: "VPC"
+    Export:
+      Name: "EKSCluster::VpcId"

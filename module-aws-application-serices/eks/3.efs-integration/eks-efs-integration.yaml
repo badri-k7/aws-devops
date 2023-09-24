@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation template for creating an EFS filesystem and integrating it with an EKS cluster
+
+Resources:
+  EFSFileSystem:
+    Type: AWS::EFS::FileSystem
+    Properties:
+      Encrypted: true
+      PerformanceMode: generalPurpose
+      LifecyclePolicies:
+        - TransitionToIA: AFTER_7_DAYS
+
+  EFSMountTarget1:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: !Ref EFSFileSystem
+      SubnetId: 
+        Fn::ImportValue: EKSCluster::SubnetId1
+      SecurityGroups: 
+        - !Ref EFSSecurityGroup
+  
+  EFSMountTarget2:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: !Ref EFSFileSystem
+      SubnetId: 
+        Fn::ImportValue: EKSCluster::SubnetId2
+      SecurityGroups: 
+        - !Ref EFSSecurityGroup
+
+  EFSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+      GroupDescription: EFS security group
+      VpcId: 
+        Fn::ImportValue: EKSCluster::VpcId
+
+Outputs:
+  EFSFileSystemId:
+    Description: The ID of the EFS file system
+    Value: !Ref EFSFileSystem
+  EFSFileSystemArn:
+    Description: The ARN of the EFS file system
+    Value: 
+      Fn::Sub: arn:aws:elasticfilesystem:${AWS::Region}:${AWS::AccountId}:file-system/${EFSFileSystem}
