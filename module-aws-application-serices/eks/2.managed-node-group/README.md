@@ -22,7 +22,8 @@ Create a new CloudFormation stack to deploy the managed node group into your exi
 
 ```bash
 aws cloudformation create-stack --stack-name eks-managed-node-group \
-  --template-body file://eks-managed-node-group.yaml 
+  --template-body file://eks-managed-node-group.yaml \
+  --capabilities CAPABILITY_NAMED_IAM
 ```
 
 ### Step 3: Monitor the Stack Creation
