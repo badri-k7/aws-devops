@@ -54,6 +54,28 @@ Outputs:
   EKSClusterEndpoint:
     Description: 'Endpoint of the provisioned EKS Cluster'
     Value: !GetAtt [ EKSCluster, Endpoint ]
+
   EKSClusterARN:
     Description: 'ARN of the provisioned EKS Cluster'
     Value: !GetAtt [ EKSCluster, Arn ]
+
+  ClusterName:
+    Description: "The name of the EKS Cluster"
+    Value: 
+      Ref: "EKSCluster"
+    Export:
+      Name: "EKSCluster::ClusterName"
+
+  SubnetId1:
+    Description: "The ID of the first subnet"
+    Value: 
+      Ref: "PublicSubnet1"
+    Export:
+      Name: "EKSCluster::SubnetId1"
+
+  SubnetId2:
+    Description: "The ID of the second subnet"
+    Value: 
+      Ref: "PublicSubnet2"
+    Export:
+      Name: "EKSCluster::SubnetId2"
