@@ -31,12 +31,11 @@ aws cloudformation create-stack --stack-name eks-efs-integration --template-body
 
 Once the CloudFormation stack is successfully created, confirm that the EFS filesystem and related resources are created. This can be done either from the AWS Management Console or via AWS CLI.
 
-### Step 4: Create Persistent Volume and Persistent Volume Claim
-
-Before integrating EFS with EKS, create a Persistent Volume (PV) and a Persistent Volume Claim (PVC) for the EFS filesystem. Use the EFS filesystem ID outputted by the CloudFormation stack.
+### Step 4a: Create Persistent Volume
+First, create a Persistent Volume (PV) using the EFS filesystem ID that you get from the AWS EFS Dashboard. Create a YAML file named efs-pv.yaml with the following content:
 
 ```yaml
-# Create efs-pv-pvc.yaml file
+---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -44,30 +43,44 @@ metadata:
 spec:
   capacity:
     storage: 5Gi
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteMany
-  nfs:
-    server: <EFS_SERVER_ID> #EFS DNS name in the EFS dashboard under the filesystem details.
-    path: "/"
+    - ReadWriteOnce
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: <REPLACE-WITH-EFS-FILE-SYSTEM-ID>
+```
+
+Apply the PV manifest:
+
+```bash
+kubectl apply -f efs-pv.yaml
+```
+### Step 4b: Create Persistent Volume Claim
+After successfully creating the PV, create a Persistent Volume Claim (PVC) to claim storage from the PV you just created. Create a YAML file named efs-pvc.yaml with the following content:
+
+```yaml
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: efs-pvc
+  name: efs-claim
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi
 ```
 
-Apply the PV and PVC manifests:
+Apply the PVC manifest:
 
 ```bash
-kubectl apply -f efs-pv-pvc.yaml
+kubectl apply -f efs-pvc.yaml
 ```
-
 ### Step 5: Integrate EFS with EKS
 
 Update your EKS cluster configurations or deployment manifests to use the EFS filesystem as a volume.
@@ -75,22 +88,24 @@ Update your EKS cluster configurations or deployment manifests to use the EFS fi
 Example EKS Pod manifest snippet:
 
 ```yaml
-# Create my-efs-pod.yaml file
+---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-efs-pod
+  name: efs-app
 spec:
-  volumes:
-  - name: efs-volume
-    persistentVolumeClaim:
-      claimName: efs-pvc  # The PVC that's backed by EFS
   containers:
-  - name: my-container
-    image: nginx:1.19  # Using a specific version for better reproducibility
+  - name: app
+    image: centos
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo $(date -u) >> /data/out.txt; sleep 2; done"]
     volumeMounts:
-    - mountPath: /shared-data  # Path inside the container where the EFS volume will be mounted
-      name: efs-volume
+    - name: persistent-storage
+      mountPath: /data
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: efs-claim
 ```
 
 ### Step 6: Deploy Manifests to EKS
@@ -98,7 +113,7 @@ spec:
 Apply your updated manifests to your EKS cluster.
 
 ```bash
-kubectl apply -f my-efs-pod.yaml
+kubectl apply -f efs-pod.yaml
 ```
 
 ### Step 7: Confirm EFS Integration
@@ -106,10 +121,7 @@ kubectl apply -f my-efs-pod.yaml
 Check if your EKS pods are running and confirm that they can read/write to the EFS filesystem.
 
 ```bash
-kubectl exec -it my-efs-pod -- /bin/bash
-# inside the pod
-cd /shared-data
-touch test-file
+kubectl exec -ti efs-app -- tail -f /data/out.txt
 ```
 
 ## Conclusion

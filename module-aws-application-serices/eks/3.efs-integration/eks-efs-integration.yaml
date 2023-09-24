@@ -1,3 +1,4 @@
+### Update the security group rules to include inbound rules to allow connecting to file system
 AWSTemplateFormatVersion: '2010-09-09'
 Description: AWS CloudFormation template for creating an EFS filesystem and integrating it with an EKS cluster
 
@@ -34,6 +35,11 @@ Resources:
       GroupDescription: EFS security group
       VpcId: 
         Fn::ImportValue: EKSCluster::VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '2049'
+          ToPort: '2049'
+          CidrIp: 0.0.0.0/0
 
 Outputs:
   EFSFileSystemId:
