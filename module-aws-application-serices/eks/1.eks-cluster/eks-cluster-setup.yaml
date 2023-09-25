@@ -119,3 +119,8 @@ Outputs:
       Ref: "VPC"
     Export:
       Name: "EKSCluster::VpcId"
+  EKSOIDCIdentityProvider:
+    Description: 'OIDC Identity Provider ARN of the provisioned EKS Cluster'
+    Value: !GetAtt [ EKSCluster, OpenIdConnectIssuerUrl ]  # This assumes CloudFormation supports this attribute in future or you have a custom resolver
+    Export:
+      Name: "EKSCluster::OpenIdConnectIssuerUrl"      
