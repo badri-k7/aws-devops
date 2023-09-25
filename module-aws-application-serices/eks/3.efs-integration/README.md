@@ -31,7 +31,7 @@ aws cloudformation create-stack --stack-name eks-efs-integration --template-body
 Deploy the EKS add-ons CloudFormation stack to create the necessary add-ons, including the EFS CSI driver.
 
 ```bash
-aws cloudformation create-stack --stack-name eks-addons --template-body file://eks-addons.yaml
+aws cloudformation create-stack --stack-name eks-addons --template-body file://efs-addons-installation.yaml --capabilities CAPABILITY_NAMED_IAM
 ```
 
 ### Step 4: Confirm Resources
