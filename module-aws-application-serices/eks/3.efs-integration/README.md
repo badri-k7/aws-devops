@@ -27,11 +27,18 @@ Deploy the CloudFormation stack to create the EFS filesystem and other necessary
 aws cloudformation create-stack --stack-name eks-efs-integration --template-body file://eks-efs-integration.yaml
 ```
 
-### Step 3: Confirm Resources
+### Step 3: Deploy the EKS Add-ons CloudFormation Stack
+Deploy the EKS add-ons CloudFormation stack to create the necessary add-ons, including the EFS CSI driver.
+
+```bash
+aws cloudformation create-stack --stack-name eks-addons --template-body file://eks-addons.yaml
+```
+
+### Step 4: Confirm Resources
 
 Once the CloudFormation stack is successfully created, confirm that the EFS filesystem and related resources are created. This can be done either from the AWS Management Console or via AWS CLI.
 
-### Step 4a: Create Persistent Volume
+### Step 5: Create Persistent Volume
 First, create a Persistent Volume (PV) using the EFS filesystem ID that you get from the AWS EFS Dashboard. Create a YAML file named efs-pv.yaml with the following content:
 
 ```yaml
@@ -58,7 +65,7 @@ Apply the PV manifest:
 ```bash
 kubectl apply -f efs-pv.yaml
 ```
-### Step 4b: Create Persistent Volume Claim
+### Step 6: Create Persistent Volume Claim
 After successfully creating the PV, create a Persistent Volume Claim (PVC) to claim storage from the PV you just created. Create a YAML file named efs-pvc.yaml with the following content:
 
 ```yaml
@@ -81,7 +88,7 @@ Apply the PVC manifest:
 ```bash
 kubectl apply -f efs-pvc.yaml
 ```
-### Step 5: Integrate EFS with EKS
+### Step 7: Integrate EFS with EKS
 
 Update your EKS cluster configurations or deployment manifests to use the EFS filesystem as a volume.
 
@@ -108,7 +115,7 @@ spec:
       claimName: efs-claim
 ```
 
-### Step 6: Deploy Manifests to EKS
+### Step 8: Deploy Manifests to EKS
 
 Apply your updated manifests to your EKS cluster.
 
@@ -116,7 +123,7 @@ Apply your updated manifests to your EKS cluster.
 kubectl apply -f efs-pod.yaml
 ```
 
-### Step 7: Confirm EFS Integration
+### Step 9: Confirm EFS Integration
 
 Check if your EKS pods are running and confirm that they can read/write to the EFS filesystem.
 

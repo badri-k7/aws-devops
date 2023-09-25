@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation template for creating an IAM role and an EKS addon
+
+Resources:
+
+  # Define IAM Role for EFS CSI Driver
+  AmazonEKS_EFS_CSI_DriverRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: AmazonEKS_EFS_CSI_DriverRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: arn:aws:iam::<ACCOUNT_ID>:oidc-provider/<OIDC_ENDPOINT>
+            Action:
+              - sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringLike:
+                <OIDC_ENDPOINT>:sub: "system:serviceaccount:kube-system:efs-csi-*"
+                <OIDC_ENDPOINT>:aud: "sts.amazonaws.com"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonEFSCSIDriverPolicy
+
+  # Define EKS Addon for EFS CSI Driver
+  EFSAddon:
+    Type: AWS::EKS::Addon
+    Properties:
+      AddonName: "aws-efs-csi-driver"
+      AddonVersion: "v1.5.8-eksbuild.1"
+      ClusterName: 
+        Fn::ImportValue: "EKSCluster::ClusterName"
+      ServiceAccountRoleArn: !GetAtt [AmazonEKS_EFS_CSI_DriverRole, Arn]
