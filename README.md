@@ -77,5 +77,3 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
   - `eks/2.managed-node-group/README.md`: Provides a guide to setting up a managed node group for your EKS cluster using CloudFormation.
     
   - `eks/3.efs-integration/README.md`: Detailed instructions on provisioning EFS and integrating it with an EKS cluster for persistent storage.
-
-  You can copy and paste this updated README markdown into your existing README.md file.
