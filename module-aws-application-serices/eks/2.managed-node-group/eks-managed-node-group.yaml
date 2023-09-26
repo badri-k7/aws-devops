@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'AWS CloudFormation template to provision managed node group for EKS'
+
+Resources:
+
+  NodeInstanceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - ec2.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+      - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+      - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+
+  EKSNodeGroup:
+    Type: "AWS::EKS::Nodegroup"
+    Properties: 
+      AmiType: AL2_x86_64
+      ClusterName: 
+        Fn::ImportValue: "EKSCluster::ClusterName" # Importing ClusterName from EKSCluster stack
+      NodeRole: 
+        !GetAtt NodeInstanceRole.Arn
+      ScalingConfig: 
+        DesiredSize: 1
+        MaxSize: 3
+        MinSize: 1
+      Subnets: 
+        - Fn::ImportValue: "EKSCluster::SubnetId1"  # Importing SubnetId1 from EKSCluster stack
+        - Fn::ImportValue: "EKSCluster::SubnetId2"  # Importing SubnetId2 from EKSCluster stack

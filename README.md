@@ -15,17 +15,15 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
   - [Create S3 buckets using CLI](./introduction/3.s3/1.create-s3-bucket-and-upload-file-using-cli.md)
   - [Create S3 bucket using boto3](./introduction/3.s3/2.create-s3-bucket-using-boto3.md)
 - [AWS Application Services](./module-aws-application-serices)
-  - [DynamoDB handson with Boto3](./module-aws-application-serices/dynamodb/boto3)
-  - [DynamoDB handson with CLI](./module-aws-application-serices/dynamodb/cli)
-  - [SQS handson with Boto3](./module-aws-application-serices/sqs/boto3)
-  - [Container handson with AWS](./module-aws-application-serices/containers)
-    - [Docker Hello World](./module-aws-application-serices/containers/1.docker-hello-world)
-    - [Docker Deep Dive](./module-aws-application-serices/containers/2.docker-deep-dive)
-  - [ECS hands on with Cloudformation](./module-aws-application-serices/ecs)
-    - [ECS Cluster](./module-aws-application-serices/ecs/1.ecs-cluster)
-    - [ECS Service and Task Definition](./module-aws-application-serices/ecs/2.ecs-service-task-definition)
-    - [ECS Scaling Policies](./module-aws-application-serices/ecs/3.ecs-scaling-policies)
-
+  - [DynamoDB hands-on with Boto3](./module-aws-application-serices/dynamodb/boto3)
+  - [DynamoDB hands-on with CLI](./module-aws-application-serices/dynamodb/cli)
+  - [SQS hands-on with Boto3](./module-aws-application-serices/sqs/boto3)
+  - [Containers hands-on with AWS](./module-aws-application-serices/containers)
+  - [ECS hands-on with CloudFormation](./module-aws-application-serices/ecs)
+  - [EKS hands-on with CloudFormation](./module-aws-application-serices/eks)
+    - [EKS Cluster Setup](./module-aws-application-serices/eks/1.eks-cluster)
+    - [Managed Node Group](./module-aws-application-serices/eks/2.managed-node-group)
+    - [EFS Integration](./module-aws-application-serices/eks/3.efs-integration)
 
 # Introduction
 
@@ -70,3 +68,12 @@ Welcome to the "Hands-On with AWS Application Services" repository! This reposit
   - `ecs/2.ecs-service-task-definition/README.md`: Guidelines on defining and running ECS services and task definitions using CloudFormation.
     
   - `ecs/3.ecs-scaling-policies/README.md`: Dive into the scaling policies and set them up for your ECS services using CloudFormation.
+
+  ### EKS
+  The "EKS" directory provides a comprehensive guide to setting up and managing Kubernetes clusters on AWS through Amazon EKS. This section also includes how to integrate EKS with EFS for persistent storage.
+
+  - `eks/1.eks-cluster/README.md`: Contains step-by-step instructions to set up an Amazon EKS cluster using AWS CloudFormation.
+    
+  - `eks/2.managed-node-group/README.md`: Provides a guide to setting up a managed node group for your EKS cluster using CloudFormation.
+    
+  - `eks/3.efs-integration/README.md`: Detailed instructions on provisioning EFS and integrating it with an EKS cluster for persistent storage.
