@@ -13,7 +13,7 @@ In this workshop, you'll learn how to create an Elastic File System (EFS) and in
 
 ### Step 1: Validate the CloudFormation Template
 
-Before creating the stack, validate the CloudFormation template to ensure that it doesn't have errors.
+Before creating the stack, validate the CloudFormation template to ensure that it doesn't have errors. (Note: switch your directory to the `module-aws-application-services/eks/3.efs-integration` directory)
 
 ```bash
 aws cloudformation validate-template --template-body file://eks-efs-integration.yaml
