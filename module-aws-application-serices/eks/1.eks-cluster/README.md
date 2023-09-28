@@ -48,7 +48,11 @@ Run the following command to create a CloudFormation stack that will provision y
 aws cloudformation create-stack --stack-name EKSCluster --template-body file://eks-cluster-setup.yaml --capabilities CAPABILITY_NAMED_IAM
 ```
 
-Wait for the CloudFormation stack to reach the `CREATE_COMPLETE` state.
+Wait for the CloudFormation stack to reach the `CREATE_COMPLETE` state. You can monitor the stack creation from the AWS Management Console using;
+
+```
+aws cloudformation describe-stacks --stack-name EKSCluster
+```
 
 ## Additional Post-Cluster Creation Steps
 

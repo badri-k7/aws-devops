@@ -13,13 +13,13 @@ Resources:
         Statement:
           - Effect: Allow
             Principal:
-              Federated: arn:aws:iam::<ACCOUNT_ID>:oidc-provider/<OIDC_ENDPOINT>
+              Federated: arn:aws:iam::<ACCOUNT_ID>:oidc-provider/<OIDC_ENDPOINT> # Replace with your account ID and OIDC endpoint
             Action:
               - sts:AssumeRoleWithWebIdentity
             Condition:
               StringLike:
-                <OIDC_ENDPOINT>:sub: "system:serviceaccount:kube-system:efs-csi-*"
-                <OIDC_ENDPOINT>:aud: "sts.amazonaws.com"
+                <OIDC_ENDPOINT>:sub: "system:serviceaccount:kube-system:efs-csi-*" # Replace with your OIDC endpoint
+                <OIDC_ENDPOINT>:aud: "sts.amazonaws.com" # Replace with your OIDC endpoint
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy
 
